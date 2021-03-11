@@ -3,7 +3,11 @@ name = "discord-webhooks"
 version = "0.1.0"
 authors = ["twotxh"]
 edition = "2018"
+repository = "https://github.com/twotxh/discord-webhooks/"
+homepage = "https://github.com/twotxh/discord-webhooks/"
 
+license = "MIT"
+keywords = ["discord", "webhooks"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]

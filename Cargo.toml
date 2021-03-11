@@ -5,7 +5,7 @@ authors = ["twotxh"]
 edition = "2018"
 repository = "https://github.com/twotxh/discord-webhooks/"
 homepage = "https://github.com/twotxh/discord-webhooks/"
-
+description = "This is a simple library for interacting with Discord's webhooks"
 license = "MIT"
 keywords = ["discord", "webhooks"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

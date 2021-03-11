@@ -11,7 +11,6 @@ pub struct Webhook {
     channel_id: String,
     guild_id: String,
 }
-
 pub struct Client {
     reqwest: reqwest::blocking::Client,
     endpoint: String,
@@ -34,10 +33,11 @@ impl Webhook {
 
         Ok(webhook)
     }
-    pub fn delete_webhook(id: &str, token: &str) -> Result<reqwest::blocking::Response, Error> {
-        let client = reqwest::blocking::Client::new();
+    //
+    pub fn delete_webhook(hook: Client) -> Result<reqwest::blocking::Response, Error> {
+        let client = hook.reqwest;
         let endpoint: &str =
-            &("https://discord.com/api/webhooks/".to_owned() + &id.to_string() + "/" + &token);
+            &("https://discord.com/api/webhooks/".to_owned() + &hook.id + "/" + &hook.token);
         let resp = client.delete(endpoint).send()?;
         if resp.status() != 204 {
             return Err(anyhow!("{}", resp.status()));
@@ -55,7 +55,7 @@ impl Webhook {
             .body(body)
             .header("Content-Type", "application/json")
             .send()?;
-        println!("{:#?}", res);
+
         Ok(res)
     }
     pub fn edit_message(
@@ -72,7 +72,6 @@ impl Webhook {
             .send();
         Ok(res.unwrap())
     }
-
     pub fn new(id: &str, token: &str) -> Result<Client, Error> {
         Ok(Client {
             id: id.to_string(),
